@@ -67,6 +67,15 @@ struct ContentView: View {
 }
 ```
 
+## macOS Demo
+
+This package includes a bounded SwiftPM demo target for macOS that exercises the shared configuration model without presenting iOS permission flows:
+
+```bash
+swift run PermissionSheetsDemo
+swift run PermissionSheetsDemo --smoke-test
+```
+
 ## Customization
 
 ### Custom Titles and Descriptions

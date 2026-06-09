@@ -23,6 +23,10 @@ let package = Package(
             name: "LocationPermissionSheet",
             targets: ["LocationPermissionSheet"]
         ),
+        .executable(
+            name: "PermissionSheetsDemo",
+            targets: ["PermissionSheetsDemo"]
+        ),
     ],
     dependencies: [],
     targets: [
@@ -45,6 +49,10 @@ let package = Package(
             resources: [
                 .process("Media.xcassets")
             ]
+        ),
+        .executableTarget(
+            name: "PermissionSheetsDemo",
+            dependencies: ["PermissionSheets"]
         ),
 
         .testTarget(
