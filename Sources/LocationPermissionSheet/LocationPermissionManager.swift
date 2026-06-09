@@ -19,7 +19,7 @@ public class LocationPermissionManager: NSObject, PermissionManaging, CLLocation
     public func checkPermission() {
         let status = locationManager.authorizationStatus
         let shouldShow = config.forceShow ||
-            (status != .authorizedWhenInUse && status != .authorizedAlways &&
+            (!Self.isAuthorized(status) &&
              config.displayFrequency.shouldDisplay(for: .location))
         
         shouldShowSheet = shouldShow
@@ -32,5 +32,13 @@ public class LocationPermissionManager: NSObject, PermissionManaging, CLLocation
     
     public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkPermission()
+    }
+
+    private static func isAuthorized(_ status: CLAuthorizationStatus) -> Bool {
+        #if os(macOS)
+        status == .authorizedAlways
+        #else
+        status == .authorizedWhenInUse || status == .authorizedAlways
+        #endif
     }
 }

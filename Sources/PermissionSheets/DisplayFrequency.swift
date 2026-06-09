@@ -1,6 +1,6 @@
 import Foundation
 
-public enum DisplayFrequency: Equatable {
+public enum DisplayFrequency: Equatable, Sendable {
     case once
     case immediate
     case daily

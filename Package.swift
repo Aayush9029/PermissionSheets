@@ -4,7 +4,8 @@ import PackageDescription
 let package = Package(
     name: "PermissionSheets",
     platforms: [
-        .iOS(.v16)
+        .iOS(.v16),
+        .macOS(.v14)
     ],
     products: [
         // Core library with shared protocols and utilities
@@ -40,6 +41,14 @@ let package = Package(
         // Location permission library
         .target(
             name: "LocationPermissionSheet",
+            dependencies: ["PermissionSheets"],
+            resources: [
+                .process("Media.xcassets")
+            ]
+        ),
+
+        .testTarget(
+            name: "PermissionSheetsTests",
             dependencies: ["PermissionSheets"]
         )
     ]

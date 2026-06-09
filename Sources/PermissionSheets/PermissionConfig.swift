@@ -1,6 +1,6 @@
 import Foundation
 
-public struct PermissionConfig {
+public struct PermissionConfig: Equatable, Sendable {
     public let displayFrequency: DisplayFrequency
     public let forceShow: Bool
     public let title: String?
